@@ -7,7 +7,7 @@ body{
     font-size: 1.2rem;
     font-weight: bold;
     overflow-x: hidden;
-    background: #f4f7ef;
+    background: white;
 }
 .logo {
     font-family: 'Graduate';
@@ -23,11 +23,16 @@ body{
      background-position: center;
      background-size: cover;
  }
- .main-word {
-    color: rgb(91, 202, 219);  /*apply animation */
+ span {
+    color: transparent;  /*apply animation */
+}
+button a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
  .thing2 {
-    background: #f4f7ef;
+    background: white;
     color: black;
     height: 100vh;
     padding-top: 60px;
@@ -35,14 +40,40 @@ body{
     margin-bottom: 30px;
     width: 100%;
 }
-
+span:before {
+    content: attr(data-text);
+    position: absolute;
+    color: rgb(85, 199, 216);
+    overflow: hidden;
+    border-right: 1px solid white;
+    animation: type 7s linear infinite;
+    /* s */
+}
+@keyframes type {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 25%;
+    }
+    100% {
+        width: 0;
+    }
+}
+.item:hover {
+    transform: scale(1.10) translateX(-8px);
+    -webkit-box-shadow: 9px 14px 47px 5px rgba(0,0,0,0.68);
+    -moz-box-shadow: 9px 14px 47px 5px rgba(0,0,0,0.68);
+    box-shadow: 9px 14px 47px 5px rgba(0,0,0,0.68);
+    z-index: 20;
+}
 #header .main-text {
     font-family: 'Graduate';
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out; 
 }
-@keyframes moveInLeft {
+ @keyframes moveInLeft {
     0% {
       opacity: 0;
       transform: translateX(-100px); }
@@ -68,15 +99,14 @@ body{
     transform: translateY(30px); }
 100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0); } } 
 
 /* font-family: 'Dancing Script', cursive;
 font-family: 'Pacifico', cursive;
 font-family: 'Handlee', cursive;
- font-family: 'Merriweather'; */
+ font-family: sans-serif; */
 @media screen and (max-width:420px){
-    
-     #content {
+       #content {
          display: grid;
          grid-template-columns: 1fr 1fr;
          padding: 20px 2px 20px 2px;
@@ -100,16 +130,41 @@ font-family: 'Handlee', cursive;
          animation-duration: 1s;
          animation-timing-function: ease-out; 
      }
-     
+     span:before {
+        content: attr(data-text);
+        position: absolute;
+        color: rgb(85, 199, 216);
+        overflow: hidden;
+        border-right: 1px solid white;
+        animation: type 7s linear infinite;
+    }
+    @keyframes type {
+        0% {
+            width: 0;
+        }
+        50% {
+            width: 55%;
+        }
+        100% {
+            width: 0;
+        }
+    }
      .vect {
          width: 250px;
          display: none;
      } 
      
      .thing2 {
-         background: #f4f7ef;
+         background: white;
          color: black;
          height: 100vh;
+         background-position: bottom;
+         background-size: cover;
+         color: black;
+         /* height: 85vh; */
+         position: relative;
+         margin-bottom: 5px;
+         width: 100%;
          padding-top: 60px;
          position: relative;
          margin-bottom: 30px;
@@ -122,7 +177,7 @@ font-family: 'Handlee', cursive;
          height: 90px;
          top: -50px;
          left: 0;
-         background: #f4f7ef;
+         background: white;
          transform: skewY(10deg);
      }
      .thing2:after {
@@ -132,7 +187,7 @@ font-family: 'Handlee', cursive;
          height: 90px;
          top: -50px;
          right: 0;
-         background: #f4f7ef;
+         background: white;
          transform: skewY(-10deg);
      }
      
@@ -173,52 +228,30 @@ font-family: 'Handlee', cursive;
          display: none;
      }
      #content2{
-         font-family: 'Merriweather';
+         font-family: sans-serif;
          font-size: 16.5px;
          line-height: 1.6rem;
          text-align: center;
          padding: 20px;
-         /* grid-template-columns: 1fr 1fr;
-         padding: 20px 2px 20px 2px;
-         max-width: 420px;
-         margin: 0 auto;
-         margin-left: 5%;
-         margin-right: 5%; */
          margin-top: 10%;
-         /* grid-auto-rows: auto;  */
      }
      #three {
          height: 100vh;
+         background-image: linear-gradient(to bottom, 
+        rgb(225, 225, 225), rgba(0, 0, 0, 0.6)), url(./img/coins.jpg);
+         height: 100vh;
+         background-position: top;
+         background-size: cover;
          transform: skewY(-13deg);
      }
-     /* .vid {
-         position: absolute;
-         right: 0;
-         bottom: 0;
-         min-width: 100%;
-         min-height: 100%;
-         width: auto;
-         height: auto;
-         z-index: -1;
-     } */
-     video {
-         width: 100%;
-         height: 100vh;
-         object-fit: cover;
-         flex: 1;
-         
-     }
-     .vid {
-         opacity: .5;
-         position: absolute;
-     }
+  
      #content3 {
          position: relative;
          color: black;
          font-weight: bold;
          margin-left: 30px;
          margin-right: 30px;
-         font-family: 'Merriweather';
+         font-family: sans-serif;
          font-size: 16.5px;
          line-height: 1.6rem;
          text-align: center;
@@ -269,7 +302,7 @@ font-family: 'Handlee', cursive;
          font-weight: bold;
          margin-left: 30px;
          margin-right: 30px;
-         font-family: 'Merriweather';
+         font-family: sans-serif;
          font-size: 16.5px;
          line-height: 1.6rem;
          text-align: center;
@@ -326,14 +359,18 @@ font-family: 'Handlee', cursive;
      #five {
         transform: skewY(10deg);
         height: 100vh;
+        background-image: linear-gradient(to bottom, 
+        rgb(225, 225, 225), rgba(0, 0, 0, 0.6)), url(./img/header3.jpg);
+        background-position: top;
+        background-size: cover;
      }
      #content5 {
         position: relative;
-        color: black;
+        color: white;
         font-weight: bold;
         margin-left: 30px;
         margin-right: 30px;
-        font-family: 'Merriweather';
+        font-family: sans-serif;
         font-size: 16.5px;
         line-height: 1.6rem;
         text-align: center;
@@ -349,12 +386,12 @@ font-family: 'Handlee', cursive;
          display: none;
      }
      .head-text {
-         margin-top: 80%;
+         /* margin-top: 80%; */
          font-size: 30px;
          text-transform: uppercase;
          line-height: 1.3em;
          font-weight: bold;
-         font-family: 'Merriweather';
+         font-family: sans-serif;
      }
      button {
         padding: 30px;
@@ -368,8 +405,11 @@ font-family: 'Handlee', cursive;
         border: 2px solid white;
      }
      #six {
-         margin-top: 30%;
+         background: white;
+         margin-top: -10vh;
+         background-size: cover;
          height: 40vh;
+         padding-bottom: 25%;
          text-align: center;
          color: black;
      }
@@ -378,7 +418,7 @@ font-family: 'Handlee', cursive;
          color: rgb(91, 202, 219);
      }
      .para-six {
-         font-size: 20px;
+         font-size: 16px;
          padding: 20px;
 
      }
@@ -398,78 +438,13 @@ font-family: 'Handlee', cursive;
          color: rgb(91, 202, 219);
          height: 20vh;
          text-align: center;
-         padding-top: 70px;
+         padding-top: 150px;
+         
      }
     
       
 }
 
-@media screen and (max-width: 330px){ 
-    #header {
-        height: 70vh;
-    }
-    #content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 20px 2px 20px 2px;
-    max-width: 420px;
-    margin: 0 auto;
-    margin-top: 3%;
-}
-    #header .main-text {
-        font-size: 16px;
-        line-height: 1.6rem;
-        /* margin-top: 0; */
-        padding-top: 5px;
-    }
-    .sect2{
-        font-size: 23px;
-    }
-    .about-text{
-        font-size: 15px;
-    }
-    #three {
-        margin-top: 95%;
-    }
-    #three {
-        height: 150vh;
-    }
-    .item {
-        width: 100px;
-        height: 100px;
-        padding: 35px;
-    }
-    .image {
-        width: 25px;
-    }
-    .text-main {
-        font-size: 12px;
-        line-height: 1.2rem;
-    }
-    .sub-main{
-        font-size: 12px;
-    }
-    video {
-        height: 120vh;
-    }
-    #four {
-        margin-top: 0;
-        color: black;
-        margin-bottom: 60px;
-    }
-    .lorem {
-        font-size: 14px;
-    }
-    #six {
-        margin-top: 60%;
-    }
-    .para-six {
-        font-size: 14px;
-    }
-    footer {
-        margin-top: 20%;
-    }
-}
 
 @media screen and (max-width: 380px){
     #header {
@@ -522,13 +497,13 @@ font-family: 'Handlee', cursive;
         font-size: 14px;
     }
     #six {
-        margin-top: 60%;
+        /* margin-top: 60%; */
     }
     .para-six {
         font-size: 16px;
     }
     footer {
-        margin-top: 20%;
+        /* margin-top: 20%; */
     }
 }
 
@@ -553,24 +528,20 @@ font-family: 'Handlee', cursive;
     }
 }
 
-@media screen and (max-width: 1450px){
-    #header {
-        color: white;
-    }
-}
+/* ------ desktop ------*/
 
-@media screen and (min-width: 1300px){
+@media screen and (min-width: 700px){
     .main-text {
-        font-size: 60px;
-        text-align: right;
+        font-size: 35px;
+        text-align: center;
+        font-weight: normal;
     }
     .vect {
-        width: 750px;
-        /* margin-left: 10%; */
-        margin-top: -20%;
+        width: 100%;
+        margin-top: -35%;
     }
     .logo {
-        font-size: 40px;
+        font-size: 20px;
         text-align: center;
         padding: 20px;
     }
@@ -579,26 +550,29 @@ font-family: 'Handlee', cursive;
          font-weight: bold;
          margin: 0 auto;
          margin-top: 6%;
-         font-family: 'Merriweather';
+         font-family: sans-serif;
          text-align: center;
          grid-template-columns:  1fr 1fr;
          padding: 20px 2px 20px 2px;
          max-width: 1280px;    
-         column-gap: 50px;
+         column-gap: 20px;
     }
     .thing2 {
-        background: #f4f7ef;
+        background: white;
+        background-image: white;
+        background-position: bottom;
+        background-size: cover;
         color: black;
-        height: 85vh;
+        height: 65vh;
         position: relative;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         width: 100%;
     }
     #content2{
         display: grid;
-        font-family: 'Merriweather';
+        font-family: sans-serif;
         text-align: center;
-        padding: 20px;
+        padding: 50px;
         grid-template-columns: 1fr 1fr;
         padding: 20px 2px 20px 2px;
         max-width: 1280px;
@@ -610,7 +584,7 @@ font-family: 'Handlee', cursive;
         text-align: center;
         font-weight: bold;
         color: rgb(85, 199, 216);
-        font-size: 60px;
+        font-size: 20px;
         text-transform: uppercase;
     }
     .sect2::after {
@@ -636,48 +610,44 @@ font-family: 'Handlee', cursive;
     }
     .about-text {
         margin-top: 5%;
-        font-family: 'Merriweather';
-        font-size: 28px;
+        font-family: sans-serif;
+        font-size: 16px;
+        color: black;
         line-height: 1.5em;
 }
     #three {
-        height: 85vh;
-        transform: skewY(-10deg);
+        /* transform: skewY(-10deg); */
+        background-image: linear-gradient(to bottom, 
+        rgb(225, 225, 225), rgba(0, 0, 0, 0.6)), url(./img/coins.jpg);
+        height: 80vh;
+        background-position: top;
+        background-size: cover;
     }
     video {
-        width: 100%;
-        height: 85vh;
-        object-fit: cover;
-        flex: 1;
-    }
-    .vid {
-        opacity: .5;
-        position: absolute;
+        display: none;
     }
     #content3 {
-        position: relative;
         color: black;
+        display: grid;
         font-weight: bold;
         margin: 0 auto;
-        margin-left: 20.5%;
-        font-family: 'Merriweather';
-        font-size: 16.5px;
-        line-height: 1.6rem;
+        font-family: sans-serif;
+        font-size: 24px;
+        line-height: 1.5em;
         text-align: center;
-        display: grid;
-        column-gap: 100px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        padding: 40px 2px 20px 2px;
-        max-width: 1280px;    
+        column-gap: 40px;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 50px;
+        max-width: 100%; 
     }
 
    .item {
         background: white;
         padding: 30px;
         margin-bottom: 20px;
-        width: 400px;
-        height: 400px;  
-        margin-top: 20vh;
+        width: 80%;
+        height: 250px;  
+        margin-top: 10vh;
         border-radius: 20%;
         transform: translateY(7px);
         opacity: 0.1;
@@ -692,20 +662,20 @@ font-family: 'Handlee', cursive;
     }
     .text-main {
         font-weight: normal;
-        font-size: 20px;
-        font-family: 'Merriweather';
+        font-size: 16px;
+        font-family: sans-serif;
         text-align: center;
     }
     .image {
-        width: 100px;
-        margin-top: 70px;
+        width: 50px;
+        /* margin-top: 70px; */
     }
     .sub-main {
         font-weight: normal;
-        font-size: 20px;
-        font-family: 'Merriweather';
+        font-size: 14px;
+        font-family: sans-serif;
         text-align: center;
-        margin-top: 8%;
+        margin-top: 3%;
     }
     .naira {
         color: rgb(91, 202, 219);
@@ -715,7 +685,7 @@ font-family: 'Handlee', cursive;
         display: grid;
         font-weight: bold;
         margin: 0 auto;
-        font-family: 'Merriweather';
+        font-family: sans-serif;
         font-size: 24px;
         line-height: 1.5em;
         text-align: center;
@@ -725,15 +695,16 @@ font-family: 'Handlee', cursive;
         max-width: 1280px; 
     }
     .side-img {
-        width: 300px;
+        width: 150px;
     }
     #four {
-        margin-top: 7%;
+        margin-top: 10%;
+        color: black;
         margin-bottom: 10%;
      }
      .four-text {
         text-align: center;
-        font-size: 60px;
+        font-size: 30px;
         text-transform: uppercase;
     }
     .main {
@@ -741,10 +712,11 @@ font-family: 'Handlee', cursive;
     }
     .lorem {
         padding-top: 40px;
+        font-size: 16px;
     }
     .mini-header {
        padding-top:10px;
-       font-size: 30px;
+       font-size: 20px;
        font-weight: bold;
        text-transform: uppercase;
     }
@@ -762,8 +734,12 @@ font-family: 'Handlee', cursive;
        margin-top: 5%;
     }
     #five {
-        transform: skewY(10deg);
-        height: 85vh;
+        /* transform: skewY(10deg); */
+        background-image: linear-gradient(to bottom, 
+        rgb(225, 225, 225), rgba(0, 0, 0, 0.6)), url(./img/header3.jpg);
+        background-position: top;
+        background-size: cover;
+        height: 75vh;
      }
      #content5 {
         position: relative;
@@ -771,7 +747,7 @@ font-family: 'Handlee', cursive;
         color: black;
         font-weight: bold;
         margin: 0 auto;
-        font-family: 'Merriweather';
+        font-family: sans-serif;
         font-size: 30px;
         line-height: 1.6rem;
         text-align: center;
@@ -787,40 +763,47 @@ font-family: 'Handlee', cursive;
          margin-top: 35%;
      } */
      .head-text {
-        margin-top: 30%;
-        font-size: 65px;
+        margin-top: 4%;
+        font-size: 50px;
         text-transform: uppercase;
         line-height: 1.3em;
         font-weight: bold;
-        font-family: 'Merriweather';
+        font-family: sans-serif;
     }
     button {
-       padding: 50px;
-       font-size: 24px;
+       padding: 20px;
+       font-size: 16px;
        text-transform: uppercase;
-       margin-top: 10%;
+       margin-top: 5%;
        background-color: rgb(91, 202, 219);
        font-weight: bold;
        color: white;
-       border-radius: 10%;
+       border-radius: 25%;
        border: 2px solid white;
     }
     #six {
-        margin-top: 10%;
-        height: 40vh;
+        
+        height: 60vh;
         text-align: center;
         color: black;
-        margin: 0 auto;
-        padding-top: 200px;
-        max-width: 1280px;
+        padding-top: 15%;
+        margin-top: -20vh;
+        background-image: linear-gradient(to top, 
+        rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6)), url(./img/header3.jpg);
+        background-position: center;
+        background-size: cover;
+        max-width: 100%;
     }
     .six {
-        font-size: 60px;
+        font-size: 30px;
         color: rgb(91, 202, 219);
+        margin: 0 auto;
     }
     .para-six {
-        font-size: 32px;
-        padding: 20px;
+        font-size: 18px;
+        margin-left: 25%;
+        color: white;
+        margin-right: 25%;
         line-height: 1.5em;
         text-align: center;
 
@@ -845,4 +828,29 @@ font-family: 'Handlee', cursive;
     }
 }
 
+ @media only screen and (min-width:321px) and (max-width:768px){
+    #three {
+        max-width: 768px;
+
+    }
+    #content2{
+        padding: 20px;
+    }
+    #content3 {
+        column-gap: 50px;
+        margin: 0 auto;
+        padding-left: 20px;
+    }
+    #content5 {
+        padding-top: 230px;
+        color: white;
+    }
+    #six {
+        padding-top: 35%;
+        max-width: 768px;
+    }
+    #five {
+        max-width: 768px;
+    }
+} 
  
